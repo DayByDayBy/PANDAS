@@ -16,3 +16,5 @@ df = pd.DataFrame(
 
 print(df)
 
+print(df["Age"])
+
