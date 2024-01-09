@@ -18,3 +18,9 @@ print(df)
 
 print(df["Age"])
 
+ages = df["Age"]
+print(ages)
+
+
+ages = pd.Series([31, 44, 69], name="Age")
+print(ages)
