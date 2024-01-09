@@ -29,3 +29,13 @@ print(max(ages))         # but the 'ages' variable is reassigned above
 print(ages.max())        # so only the first one is accessing the original table
 
 print(df.describe())     # describe, a numerical method, so ignores textual
+
+
+# ********* stuff to remember ***********
+# 
+# Import the package, aka import pandas as pd
+# A table of data is stored as a pandas DataFrame
+# Each column in a DataFrame is a Series
+# You can do things by applying a method to a DataFrame or Series
+
+
