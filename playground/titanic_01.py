@@ -33,9 +33,9 @@ print(df.describe())     # describe, a numerical method, so ignores textual
 
 # ********* stuff to remember ***********
 # 
-# Import the package, aka import pandas as pd
-# A table of data is stored as a pandas DataFrame
-# Each column in a DataFrame is a Series
-# You can do things by applying a method to a DataFrame or Series
+# import the package, aka import pandas as pd
+# a table of data is stored as a pandas DataFrame
+# each column in a DataFrame is a Series
+# you can do things by applying a method to a DataFrame or Series
 
 
