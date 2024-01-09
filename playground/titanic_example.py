@@ -29,4 +29,3 @@ print(max(ages))         # but the 'ages' variable is reassigned above
 print(ages.max())        # so only the first one is accessing the original table
 
 print(df.describe())     # describe, a numerical method, so ignores textual
-
