@@ -29,3 +29,7 @@ print(
 
 # ['area', 'bar', 'barh', 'box', 'density','hexbin', 'hist', 'kde', 'line', 'pie', 'scatter']
 
+air_quality.plot.box()
+plt.show()
+air_quality.plot.kde()
+plt.show()
