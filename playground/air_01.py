@@ -22,8 +22,10 @@ air_quality = pd.read_csv(
 print(
     [
     method_name
-    for method_name in dir(air_quality.plot)
+    for method_name in dir(air_quality.plot)        # printing out a list of methods
     if not method_name.startswith("_")
     ]
 )
+
+# ['area', 'bar', 'barh', 'box', 'density','hexbin', 'hist', 'kde', 'line', 'pie', 'scatter']
 
