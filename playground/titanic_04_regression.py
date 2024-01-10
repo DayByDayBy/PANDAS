@@ -58,6 +58,6 @@ plt.show()
 
 #    feels like there are probably better ways to show this data, and while the titanic dats is clearly a classic, 
 #    i find myself a bit disenchanted with the limitations - iirc kaggle has slightly more data?  but tbh even so, 
-#    i think i would have more fun with deeper/larger sets
+#    i think i would have more fun with deeper/larger sets, and certainly ones where the information is of more interest to me personally 
 
 
