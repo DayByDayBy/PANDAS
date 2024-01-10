@@ -29,7 +29,25 @@ print(
 
 # ['area', 'bar', 'barh', 'box', 'density','hexbin', 'hist', 'kde', 'line', 'pie', 'scatter']
 
-air_quality.plot.box()
+air_quality.plot.box()                                            # box plot 
+plt.show()                          
+air_quality.plot.kde()                                            # kernel density estimate plot
 plt.show()
-air_quality.plot.kde()
+
+axs = air_quality.plot.area(figsize = (12, 4), subplots=True)     # subplotting, ie one per column
 plt.show()
+
+
+fig, axs = plt.subplots(figsize=(12, 4))        # creates empty Matplotlib Figure and Axes
+air_quality.plot.area(ax=axs)                   # using pandas to put the area plot on the prepared Figure/Axes
+axs.set_ylabel("NO$_2$ concentration")          # Matplotlib customization 
+fig.savefig("no2_concentrations.png")           # save the Figure/Axes using existing Matplotlib method.
+plt.show()                                      # show the plot
+
+
+# __________ stuff ___________
+# '.plot.*' methods are applicable on both Series and DataFrames.
+# by default, each of the columns is plotted as a different element (line, boxplot,…).
+# any plot created by pandas is a Matplotlib object.
+
+
