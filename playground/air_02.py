@@ -46,8 +46,6 @@ air_quality_renamed = air_quality_renamed.rename(columns=str.lower)  # same idea
 print(air_quality_renamed.head())
 
 
-
-
 # ___________stuff__________
 # create new column by assigning output to  DataFrame with a new column name in between the [].
 # operations are element-wise, no need to loop
