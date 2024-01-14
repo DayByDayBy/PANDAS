@@ -138,7 +138,6 @@ no_2 = no2_pivoted.melt(
 print(no_2.head())
 
 
-
 #    ----------- stuff --------------
 # sorting by one or more columns is supported by sort_values.
 # the pivot function is purely restructuring of the data, pivot_table supports aggregations.
