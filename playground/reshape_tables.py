@@ -74,8 +74,72 @@ print('\n\n\n')
             # 2019-06-20 20:00:00+00:00  Paris      FR  FR04014       no2   21.4  µg/m³
 
 
-no2.pivot(columns="location", values="value").plot()
-plt.show()
+no2.pivot(columns="location", values="value").plot()                    # when index parameter is not defined, the existing index (row labels) is used.
+# plt.show()
+
+print(
+air_quality.pivot_table(
+    values="value", index="location", columns="parameter", aggfunc="mean"
+    )
+)
+print('\n\n\n')
 
 
 
+    # In the case of pivot(), the data is only rearranged. 
+    # When multiple values need to be aggregated (in this specific case, 
+    # the values on different time steps), pivot_table() can be used,
+    # providing an aggregation function (e.g. mean) on how to combine these values.
+    
+# (pivot table in pandas: https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html#reshaping-pivot )
+# if intersted in rows/columns, set margins parameter to True:
+
+print(
+    air_quality.pivot_table(
+        values = "value", 
+        index = "location", 
+        columns = "parameter",
+        aggfunc = "mean",
+        margins = True,
+    )
+)
+
+# pivot_table() is indeed directly linked to groupby().
+# same result can be derived by grouping on both parameter and location:
+
+        # air_quality.groupby(["parameter", "location"]).mean()
+
+
+# –––––––-––––––--
+
+
+
+    # wide-to-long:
+
+no2_pivoted = no2.pivot(
+    columns="location",
+    values="value"
+    ).reset_index()
+print(no2_pivoted.head())
+
+no_2 = no2_pivoted.melt(id_vars="date.utc")
+print(no_2.head())
+
+    # pandas.melt() method on a DataFrame converts the data table from wide format to long format. 
+    # The column headers become the variable names in a newly created column.
+
+no_2 = no2_pivoted.melt(
+    id_vars="date.utc",
+    value_vars=["BETR801", "FR04014", "London Westminster"],
+    value_name= "NO_2",
+    var_name="id_location",   
+)
+
+print(no_2.head())
+
+
+
+#    ----------- stuff --------------
+# sorting by one or more columns is supported by sort_values.
+# the pivot function is purely restructuring of the data, pivot_table supports aggregations.
+# the reverse of pivot (long to wide format) is melt (wide to long format).
