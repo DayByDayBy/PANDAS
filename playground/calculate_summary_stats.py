@@ -137,8 +137,6 @@ print(titanic.groupby("Pclass")["Pclass"].count())
 # ie it counts the rows rather than data points, whereas 'count()' excludes missing values
 
 
-
-
 #          ______________stuff________________
 
     # aggregation statistics can be calculated on entire columns or rows.
