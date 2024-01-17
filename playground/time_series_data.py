@@ -110,3 +110,17 @@ print(monthly_max)
     # U, us - microseconds
     # N - nanoseconds
 
+print(monthly_max.index.freq)   # shows the frequency of the monthly max defined above
+
+no_2.resample("D").mean().plot(style="-o", figsize=(10, 5));
+plt.show()
+
+
+
+
+______________________________stuff______________________________
+
+        # valid date strings can be converted to datetime objects using to_datetime function or as part of read functions.
+        # datetime objects in pandas support calculations, logical operations and convenient date-related properties using the dt accessor.
+        # DatetimeIndex contains these date-related properties and supports convenient slicing.
+        # resample() is a powerful method to change the frequency of a time series.
