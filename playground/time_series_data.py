@@ -51,6 +51,62 @@ air_quality["quarter"] = air_quality["datetime"].dt.quarter   # new column for q
 # print(air_quality.groupby([air_quality["datetime"].dt.weekday, "location"])["value"].mean())
 
 fig, axs = plt.subplots(figsize = (12, 4))
-air_quality.groupby(air_quality["datetime"].dt.hour)["value"].mean().plot(kind='bar', rot = 0, ax=axs)      # averages for hours of the day plotted as barchart         
+air_quality.groupby(air_quality["datetime"].dt.hour)["value"].mean().plot(kind='bar', rot = 0, ax=axs)      # averages for hours of the day plotted as barchart
 
-plt.show()
+#matplotlib labelling:
+plt.xlabel("hour of the day"); 
+plt.ylabel("$NO_2 (µg/m^3)$");
+
+# plt.show()
+
+no_2 = air_quality.pivot(index="datetime", columns="location", values="value")   # pivot to make the table show locations as columns for comparison
+# print(no_2)
+# print(air_quality)
+
+
+print(no_2.index.year, no_2.index.weekday)
+# this shows the available indexables for each object:
+        # Index([2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019,
+        #        ...
+        #        2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019],
+        #       dtype='int32', name='datetime', length=1033) Index([1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        #        ...
+        #        3, 3, 3, 3, 3, 3, 3, 3, 3, 4],
+        #       dtype='int32', name='datetime', length=1033)
+        
+        
+no_2["2019-05-20":"2019-05-21"].plot()  # plotting a sepcifc date range via the datetime index
+# plt.show() 
+
+monthly_max = no_2.resample("M").max()   # monthly max in the still-pivoted table, ie monthly max per location, for any months in data (here there are two)
+print(monthly_max)
+
+#  _aliases:
+    # B - business day frequency
+    # C - custom business day frequency
+    # D - calendar day frequency
+    # W - weekly frequency
+    # M - month end frequency
+    # SM - semi-month end frequency (15th and end of month)
+    # BM - business month end frequency
+    # CBM - custom business month end frequency
+    # MS - month start frequency
+    # SMS - semi-month start frequency (1st and 15th)
+    # BMS - business month start frequency
+    # CBMS - custom business month start frequency
+    # Q - quarter end frequency
+    # BQ - business quarter end frequency
+    # QS - quarter start frequency
+    # BQS - business quarter start frequency
+    # A, Y - year end frequency
+    # BA, BY - business year end frequency
+    # AS, YS - year start frequency
+    # BAS, BYS - business year start frequency
+    # BH - business hour frequency
+    # H - hourly frequency
+    # T, min - minutely frequency
+    # S - secondly frequency
+    # L, m - milliseconds
+    # U, us - microseconds
+    # N - nanoseconds
+
