@@ -116,8 +116,6 @@ no_2.resample("D").mean().plot(style="-o", figsize=(10, 5));
 plt.show()
 
 
-
-
 ______________________________stuff______________________________
 
         # valid date strings can be converted to datetime objects using to_datetime function or as part of read functions.
