@@ -126,7 +126,6 @@ print(titanic.groupby(["Sex", "Age"])["Fare"].mean())
 
 # counting by category:
 
-
 print(titanic["Pclass"].value_counts())
 # this counts each differfent value for Pclass, ie 491, 216, and 184 (891 total)
 
