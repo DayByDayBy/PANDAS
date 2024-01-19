@@ -73,3 +73,19 @@ print(
     decimal=".", 
     line_width=None)
 )
+
+
+
+    # this sorta thing may make a better model?
+    # populating it with list comp, but in this sort of shape,  
+    # a multindex model
+
+# data = {
+#     'Game': [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3],
+#     'Round': [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 6, 1, 2, 3],
+#     'Color': ['Red', 'Blue', 'Green'] * 3,
+#     'Score': [10, 15, 20, 8, 12, 18, 5, 10, 15]
+# }
+
+# # Creating a DataFrame
+# df = pd.DataFrame(data)
