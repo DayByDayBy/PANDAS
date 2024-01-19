@@ -89,3 +89,42 @@ print(
 
 # # Creating a DataFrame
 # df = pd.DataFrame(data)
+
+
+
+
+
+# having a wee stab...
+
+
+game_list = pd.read_table("raw_games.txt", sep=':', header=None, names=["game", "rounds"])
+game_list["game"] = game_list["game"].str.strip("Game ")
+game_list["rounds"] = game_list["rounds"].str.split(';')
+
+data = []
+
+# not sure how else to do this besides a wee loop... 
+# not loving it, but popping it in as a placeholder 
+#  maybe not as 'unpandonic' (ok, that's worse) as it 
+# could be if it's pre-df, if it's to gather the data to _make_ the frame
+# still seems a bit clumsy tho 
+
+
+for _, row in game_list.iterrows():
+    game = int(row["game"])
+    rounds_data = row["rounds"]
+    for round_data in rounds_data:
+        round_info = [game]
+        color_score_pairs = round_data.split(',')    
+        for pair in color_score_pairs:
+            color, score = pair.strip().split()
+            round_info.extend([int(score), color.lower()])   
+        data.append(round_info)
+
+columns = ['Game']
+for i in range(1, (len(data[0]) - 1) // 2 + 1):
+    columns.extend([f'Score_{i}', f'Color_{i}'])
+
+df = pd.DataFrame(data, columns=columns)
+
+print(df)
