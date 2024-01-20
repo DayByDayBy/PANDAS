@@ -5,13 +5,8 @@ titanic = pd.read_csv('data/titanic.csv')
 air_quality = pd.read_csv('data/air_quality_long.csv', index_col="date.utc", parse_dates=True)
 
 # print(titanic.head, air_quality.head)
-
 # ________________________________________________________________
-
-
-
 # sort table rows:
-
 # print(titanic.sort_values(by="Age").head())                                   # printing youngest five rows
 print(titanic.sort_values (by=['Pclass', 'Age'], ascending = False).head())     # descending order via 'ascending = False'. can do tail, but that gives table end, ie the NaN value rows
 
