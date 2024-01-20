@@ -1,5 +1,6 @@
 import pandas as pd
 import math
+import time
 
 # population = pd.read_csv('data/population.csv')
 # global_pop = population[population["Entity"] == "World"]
@@ -26,34 +27,29 @@ import math
 # ancestry mathematically inevitable - those 1280 will have had kids, yeah, and those kids will have had kids, 
 # but they will have had them with each other, and therefore the number  wont go up 'math.log(3)'
 
+
+
+
+t0 = time.perf_counter()
+
 pairs = 690
 children_per_pair = 5
-infant_mortality_rate = 0.5
+infant_mortality_rate = 0.4999
 generations = 0
 population = pairs * children_per_pair
 
 while population < 7000000000:
+    t1 = time.perf_counter()
+    
     new_births = pairs * children_per_pair
     population += new_births
     deaths_due_to_mortality = population * infant_mortality_rate
     population -= deaths_due_to_mortality
     pairs = population // children_per_pair
     generations += 1
-
-
+    t2 = time.perf_counter()
+print(t0, t1, t2, t2-t0)
 print(f"Population reached 7 billion in approximately {generations} generations.")
 
-
-# def exponential_growth(initial_population, growth_rate, time):
-#     return initial_population * math.exp(growth_rate * time)
-
-# # Example parameters
-# initial_population = 1280  # Initial population
-# growth_rate = 0.1  # Growth rate (adjust as needed)
-# time = 300  # Time in years
-
-# # Calculate the population after 300 years
-# population_at_300_years = exponential_growth(initial_population, growth_rate, time)
-
-# # Print the result
-# print(f"Population after {time} years: {population_at_300_years:.2f}")
+# this seems to be a bit unwieldy, the iteration count is pretty high to get to 7Bn, given 
+# the mortality reduction, but i'm not sure how to reduce the iteration weight
