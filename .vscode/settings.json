@@ -1,3 +1,4 @@
 {
-    "liveshare.sharedTerminalWidth": 140
+    "liveshare.sharedTerminalWidth": 140,
+    "python.REPL.enableREPLSmartSend": false
 }

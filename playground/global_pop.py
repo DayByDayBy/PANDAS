@@ -1,6 +1,8 @@
 import pandas as pd
 import math
 import time
+import numpy as np
+
 
 # population = pd.read_csv('data/population.csv')
 # global_pop = population[population["Entity"] == "World"]
@@ -28,7 +30,7 @@ import time
 # but they will have had them with each other, and therefore the number  wont go up 'math.log(3)'
 
 
-
+# ----------------------------------------------------------------
 
 t0 = time.perf_counter()
 
@@ -39,7 +41,6 @@ generations = 0
 population = pairs * children_per_pair
 
 while population < 7000000000:
-    t1 = time.perf_counter()
     
     new_births = pairs * children_per_pair
     population += new_births
@@ -47,9 +48,41 @@ while population < 7000000000:
     population -= deaths_due_to_mortality
     pairs = population // children_per_pair
     generations += 1
-    t2 = time.perf_counter()
-print(t0, t1, t2, t2-t0)
+t1 = time.perf_counter()
+
+
+print(t0, t1)
 print(f"Population reached 7 billion in approximately {generations} generations.")
 
-# this seems to be a bit unwieldy, the iteration count is pretty high to get to 7Bn, given 
-# the mortality reduction, but i'm not sure how to reduce the iteration weight
+# when running it, this seems to be a bit unwieldy. the iteration count is pretty high to get to 7Bn, given 
+# the mortality reduction, but i'm not sure how to reduce the iteration weight, or why it should need to be 
+# adjusted - yes, 7bn is a big number, but it seems quite basic maths, wonder what i am missig 
+
+
+# ----------------------------------------------------------------
+
+
+
+# import math
+# import time
+
+# def calculate_population(t, P0, r):
+#     K = 10e9  # Carrying capacity set to a large number
+#     return K / (1 + ((K - P0) / P0) * math.exp(-r * t))
+
+# t0 = time.perf_counter()
+
+# P0 = 690
+# average_generation_time_years = 25
+# r = math.log(3) / average_generation_time_years
+
+# t = 0
+# while P0 < 7e9:  # Continue until the population reaches 7 billion
+#     P0 = calculate_population(t, P0, r)
+#     t += 1
+
+# t1 = time.perf_counter()
+
+# print(t0, t1)
+# print(f"Population reached 7 billion in approximately {t} generations.")
+
