@@ -40,7 +40,8 @@ generations = 0
 
 while population < 7000000000: 
     new_births = (5 * (population // 2))
-    population += new_births * random.uniform(0,1)
+    population += int(new_births * random.uniform(0,1))
+    print(population)
     generations += 1
     
 # t1 = time.perf_counter()
@@ -55,6 +56,8 @@ print(f"Population reached 7 billion in approximately {generations} generations.
 # adjusted - yes, 7bn is a big number, but it seems quite basic maths, wonder what i am missig 
 # fixed; issue was the maths was wrong, a fairly basic/late night error: i was reducing the popluation too much, and so making it very slow to get to 7bn
 
+# did it in go as well, not sure which i prefer - python seems the place 
+# for this stuff, but i like how go approaches things like the randomisation
 
 # ----------------------------------------------------------------
 
