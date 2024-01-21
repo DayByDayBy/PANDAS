@@ -1,5 +1,6 @@
 import pandas as pd
 import math
+import random
 import time
 import numpy as np
 
@@ -32,34 +33,40 @@ import numpy as np
 
 # ----------------------------------------------------------------
 
-t0 = time.perf_counter()
+# t0 = time.perf_counter()
 
-pairs = 690
-children_per_pair = 5
-infant_mortality_rate = 0.4999
+population = 1280
 generations = 0
-population = pairs * children_per_pair
 
-while population < 7000000000:
-    
-    new_births = pairs * children_per_pair
-    population += new_births
-    deaths_due_to_mortality = population * infant_mortality_rate
-    population -= deaths_due_to_mortality
-    pairs = population // children_per_pair
+while population < 7000000000: 
+    new_births = (5 * (population // 2))
+    population += new_births * random.uniform(0,1)
     generations += 1
-t1 = time.perf_counter()
+    
+# t1 = time.perf_counter()
+# print(t0, t1)
 
-
-print(t0, t1)
 print(f"Population reached 7 billion in approximately {generations} generations.")
+
+
 
 # when running it, this seems to be a bit unwieldy. the iteration count is pretty high to get to 7Bn, given 
 # the mortality reduction, but i'm not sure how to reduce the iteration weight, or why it should need to be 
 # adjusted - yes, 7bn is a big number, but it seems quite basic maths, wonder what i am missig 
+# fixed; issue was the maths was wrong, a fairly basic/late night error: i was reducing the popluation too much, and so making it very slow to get to 7bn
 
 
 # ----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 
 

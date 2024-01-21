@@ -1,22 +1,29 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func main() {
-	pairs := 690
+
+	people := 1280
 	childrenPerPair := 5
-	infantMortalityRate := 0.4999
 	generations := 0
-	population := pairs * childrenPerPair
+	population := people
 
 	for population < 7000000000 {
-		newBirths := pairs * childrenPerPair
-		population += newBirths
-		deathsDueToMortality := int(float64(population) * infantMortalityRate)
-		population -= deathsDueToMortality
-		pairs = population / childrenPerPair
+		newBirths := ((population / 2) * childrenPerPair) * int(randomMortalityFactor())
+		population += newBirths 
 		generations++
 	}
 
-	fmt.Printf("Population reached 7 billion in approximately %d generations.\n", generations)
+	fmt.Printf("Population reached 7 billion in approximately %d generations, or %d years \n", generations, generations*25)
+}
+
+func randomMortalityFactor() float64 {
+	if rand.Intn(2) == 0 {
+		return 0.0
+	}
+	return 1.0
 }
